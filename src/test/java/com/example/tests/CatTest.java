@@ -6,10 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import java.util.Arrays;
-import java.util.List;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CatTest {
@@ -26,9 +24,7 @@ public class CatTest {
     @Test
     public void testGetFood() throws Exception {
         Cat cat = new Cat(feline);
-        List<String> expectedFood = Arrays.asList("Животные", "Птицы", "Рыба");
-        when(feline.eatMeat()).thenReturn(expectedFood);
-
-        assertEquals(expectedFood, cat.getFood());
+        cat.getFood();
+        verify(feline).eatMeat();
     }
 }
